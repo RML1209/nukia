@@ -9,6 +9,7 @@ import {
   Box,
 } from "@mui/material";
 
+import ImageIcon from "@mui/icons-material/Image";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CallIcon from "@mui/icons-material/Call";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -152,6 +153,108 @@ const ShopCard = ({ shop, language }) => {
             {shop.description}
           </Typography>
 
+{/* ================= PRODUCT GALLERY ================= */}
+
+{shop.products?.length > 0 && (
+  <Box sx={{ mt: 3 }}>
+    <Typography
+      sx={{
+        color: "#C8A96B",
+        mb: 1.5,
+        fontWeight: 600,
+        fontSize: "0.95rem",
+      }}
+    >
+      Featured Products
+    </Typography>
+
+    <Stack
+      direction="row"
+      spacing={2}
+      sx={{
+        overflowX: "auto",
+        pb: 1,
+
+        "&::-webkit-scrollbar": {
+          height: "5px",
+        },
+
+        "&::-webkit-scrollbar-thumb": {
+          background: "rgba(200,169,107,0.4)",
+          borderRadius: "20px",
+        },
+      }}
+    >
+      {shop.products.map((product) => (
+        <Box
+          key={product.id}
+          sx={{
+            minWidth: 120,
+            textAlign: "center",
+          }}
+        >
+          {product.product_image ? (
+            <Box
+              component="img"
+              src={product.product_image}
+              alt={product.product_name}
+              sx={{
+                width: 120,
+                height: 120,
+                objectFit: "cover",
+                borderRadius: 3,
+                border:
+                  "1px solid rgba(255,255,255,0.1)",
+
+                transition: "0.3s ease",
+
+                "&:hover": {
+                  transform: "scale(1.05)",
+                },
+              }}
+            />
+          ) : (
+            <Box
+              sx={{
+                width: 120,
+                height: 120,
+                borderRadius: 3,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background:
+                  "rgba(255,255,255,0.05)",
+                border:
+                  "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <ImageIcon
+                sx={{
+                  color: "#C8A96B",
+                  fontSize: 40,
+                }}
+              />
+            </Box>
+          )}
+
+          <Typography
+            sx={{
+              mt: 1,
+              color: "gray",
+              fontSize: "0.8rem",
+              maxWidth: 120,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {product.product_name}
+          </Typography>
+        </Box>
+      ))}
+    </Stack>
+  </Box>
+)}
           {/* ================= PRODUCT TAGS ================= */}
 
           <Stack
