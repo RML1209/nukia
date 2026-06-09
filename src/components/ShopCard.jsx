@@ -4,7 +4,6 @@ import {
   Typography,
   Button,
   Stack,
-  Chip,
   Avatar,
   Box,
 } from "@mui/material";
@@ -168,6 +167,7 @@ const ShopCard = ({ shop, language }) => {
       Featured Products
     </Typography>
 
+<Box>
     <Stack
       direction="row"
       spacing={2}
@@ -237,27 +237,62 @@ const ShopCard = ({ shop, language }) => {
             </Box>
           )}
 
-          <Typography
-            sx={{
-              mt: 1,
-              color: "gray",
-              fontSize: "0.8rem",
-              maxWidth: 120,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {product.product_name}
-          </Typography>
+
+
+<Typography
+  sx={{
+    mt: 1,
+    color: "#C8A96B",
+    fontSize: "0.85rem",
+    fontWeight: 600,
+    maxWidth: 120,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    borderRadius: 2,
+    
+  }}
+>
+  {product.product_name}
+</Typography>
+
+{product.product_price > 0 && (
+  <Box
+    sx={{
+      mt: 0.8,
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      px: 1.2,
+      py: 0.4,
+      borderRadius: 2,
+      background: "rgba(200,169,107,0.12)",
+      border: "1px solid rgba(200,169,107,0.25)",
+      backdropFilter: "blur(10px)",
+    }}
+  >
+    <Typography
+      sx={{
+        color: "#C8A96B",
+        fontWeight: 700,
+        fontSize: "0.78rem",
+      }}
+    >
+      TZS {Number(product.product_price).toLocaleString()}
+    </Typography>
+  </Box>
+)}
+
         </Box>
       ))}
     </Stack>
   </Box>
+  </Box>
 )}
+
           {/* ================= PRODUCT TAGS ================= */}
 
-          <Stack
+          {/* <Stack
             direction="row"
             spacing={1}
             sx={{
@@ -285,7 +320,7 @@ const ShopCard = ({ shop, language }) => {
               />
             ))}
 
-          </Stack>
+          </Stack> */}
 
           {/* ================= ACTION BUTTONS ================= */}
 
