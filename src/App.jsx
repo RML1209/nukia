@@ -24,11 +24,24 @@ import LocationSelect from "./components/LocationSelect";
 import ShopCard from "./components/ShopCard";
 import LanguageToggle from "./components/LanguageToggle";
 import Footer from "./components/Footer";
+import FeaturedCategories from "./components/FeaturedCategories";
+
 
 import { getTheme } from "./theme";
 import { lang } from "./lang";
 
 function App() {
+  // =========================
+  // CATEGORIES STATE
+  // =========================
+  const [categories, setCategories] =
+  useState([]);
+
+const [selectedCategory, setSelectedCategory] =
+  useState(null);
+
+const [featuredProducts, setFeaturedProducts] =
+  useState([]);
   // =========================
   // SEARCH STATE
   // =========================
@@ -81,6 +94,54 @@ function App() {
   // ALL SHOPS
   // =========================
 const [allShops, setAllShops] = useState([]);
+
+
+ // =========================
+  // FETCH CATEGORIES
+  // =========================
+useEffect(() => {
+  const fetchCategories = async () => {
+    try {
+      const response =
+        await API.get("categories/");
+
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchCategories();
+}, []);
+
+
+ // =========================
+  // FETCH CATEGORIES BY CATEGORIES
+  // =========================
+useEffect(() => {
+  const fetchCategoryProducts =
+    async () => {
+      try {
+        if (!selectedCategory) {
+          setFeaturedProducts([]);
+          return;
+        }
+
+        const response =
+          await API.get(
+            `categories/${selectedCategory}/`
+          );
+
+        setFeaturedProducts(
+          response.data
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  fetchCategoryProducts();
+}, [selectedCategory]);
   // =========================
   // FETCH SHOPS + SEARCH
   // =========================
@@ -347,6 +408,19 @@ const locations = [
             </div>
           </motion.div>
         </Container>
+
+        {/* ================= FEATURED CATEGORIES  SECTION ================= */}
+
+<FeaturedCategories
+  categories={categories}
+  selectedCategory={
+    selectedCategory
+  }
+  setSelectedCategory={
+    setSelectedCategory
+  }
+/>
+
 
         {/* ================= RESULTS SECTION ================= */}
 
