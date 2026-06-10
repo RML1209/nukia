@@ -39,12 +39,12 @@ function FeaturedCategories({
           background:
             selectedCategory === null
               ? "#C8A96B"
-              : "rgba(255,255,255,0.05)",
+              : "rgba(200,169,107,0.4)",
 
           color:
             selectedCategory === null
               ? "#000"
-              : "#fff",
+              : "#000",
 
           fontWeight: 600,
 
@@ -67,14 +67,13 @@ function FeaturedCategories({
               selectedCategory ===
               category.slug
                 ? "#C8A96B"
-                : "rgba(255,255,255,0.05)",
+                : "rgba(200,169,107,0.4)",
 
             color:
               selectedCategory ===
               category.slug
                 ? "#000"
-                : "#fff",
-
+                : "#000",
             fontWeight: 600,
 
             whiteSpace: "nowrap",

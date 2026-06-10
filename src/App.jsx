@@ -25,6 +25,7 @@ import ShopCard from "./components/ShopCard";
 import LanguageToggle from "./components/LanguageToggle";
 import Footer from "./components/Footer";
 import FeaturedCategories from "./components/FeaturedCategories";
+import FeaturedProducts from "./components/FeaturedProducts";
 
 
 import { getTheme } from "./theme";
@@ -431,6 +432,10 @@ const locations = [
           }}
         >
           {/* LOADING */}
+
+          <FeaturedProducts
+  products={featuredProducts}
+/>
 
           {loading ? (
             <div
