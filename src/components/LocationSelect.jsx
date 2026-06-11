@@ -30,7 +30,7 @@ const LocationSelect = ({
       }
 
       sx={{
-        borderRadius: 3
+        borderRadius: 2
       }}
     >
 

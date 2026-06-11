@@ -35,14 +35,14 @@ const ShopCard = ({ shop, language }) => {
       <Card
         sx={{
           mb: 3,
-          borderRadius: 2,
+          borderRadius: 1.5,
           background: "rgba(255,255,255,0.03)",
           backdropFilter: "blur(12px)",
           border: "1px solid rgba(255,255,255,0.08)",
           transition: "0.3s ease",
 
           "&:hover": {
-            transform: "translateY(-5px)",
+            transform: "translateY(-2px)",
             boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
           },
         }}
@@ -80,10 +80,9 @@ const ShopCard = ({ shop, language }) => {
               <Typography
                 variant="h5"
                 sx={{
-                  fontFamily:
-                    "Playfair Display, serif",
-                  fontWeight: 600,
+ fontFamily: "Inter, sans-serif",                
                   textAlign: "left",
+                  fontWeight: 600,
                 }}
               >
                 {shop.name}
@@ -143,7 +142,7 @@ const ShopCard = ({ shop, language }) => {
 
           <Typography
             sx={{
-              mt: 2.5,
+              mt: 1,
               color: "gray",
               lineHeight: 1.8,
               fontSize: "0.96rem",
@@ -155,7 +154,7 @@ const ShopCard = ({ shop, language }) => {
 {/* ================= PRODUCT GALLERY ================= */}
 
 {shop.products?.length > 0 && (
-  <Box sx={{ mt: 3 }}>
+  <Box sx={{ mt: 2 }}>
     <Typography
       sx={{
         color: "#C8A96B",
@@ -164,7 +163,7 @@ const ShopCard = ({ shop, language }) => {
         fontSize: "0.95rem",
       }}
     >
-      Featured Products
+      All Products
     </Typography>
 
 <Box>
@@ -176,7 +175,7 @@ const ShopCard = ({ shop, language }) => {
         pb: 1,
 
         "&::-webkit-scrollbar": {
-          height: "5px",
+          height: 1,
         },
 
         "&::-webkit-scrollbar-thumb": {
@@ -202,14 +201,14 @@ const ShopCard = ({ shop, language }) => {
                 width: 120,
                 height: 120,
                 objectFit: "cover",
-                borderRadius: 3,
+                borderRadius: 1,
                 border:
                   "1px solid rgba(255,255,255,0.1)",
 
                 transition: "0.3s ease",
 
                 "&:hover": {
-                  transform: "scale(1.05)",
+                  transform: "scale(1.02)",
                 },
               }}
             />
@@ -322,68 +321,143 @@ const ShopCard = ({ shop, language }) => {
 
           </Stack> */}
 
-          {/* ================= ACTION BUTTONS ================= */}
+        {/* ================= ACTION BUTTONS ================= */}
 
-          <Stack
-            direction={{
-              xs: "column",
-              sm: "row",
-            }}
-            spacing={1.5}
-            sx={{ mt: 3 }}
-          >
+<Stack
+  direction="row"
+  spacing={2}
+  justifyContent="center"
+  sx={{ mt: 2 }}
+>
+  {/* WHATSAPP */}
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      flex: 1,
+    }}
+  >
+    <Button
+      variant="contained"
+      href={`https://wa.me/${shop.phone}?text=${encodeURIComponent(
+        whatsappMessage
+      )}`}
+      target="_blank"
+      sx={{
+        minWidth: 50,
+        width: 50,
+        height: 50,
+        borderRadius: "50%",
+        p: 0,
+          "&:hover": {
+      backgroundColor: "#25D366",
+      transform: "translateY(-2px)",
+      boxShadow: "0 4px 12px rgba(37,211,102,0.4)",
+    },
+      }}
+    >
+      <WhatsAppIcon fontSize="small" />
+    </Button>
 
-            {/* WHATSAPP */}
+    <Typography
+      sx={{
+        mt: 0.5,
+        fontSize: "0.65rem",
+        textAlign: "center",
+        color: "text.secondary",
+      }}
+    >
+      Chat on WhatsApp
+    </Typography>
+  </Box>
 
-            <Button
-              variant="contained"
-              startIcon={<WhatsAppIcon />}
-              href={`https://wa.me/${shop.phone}?text=${encodeURIComponent(
-                whatsappMessage
-              )}`}
-              target="_blank"
-              sx={{
-                borderRadius: 3,
-                textTransform: "none",
-                py: 1,
-              }}
-            >
-              WhatsApp
-            </Button>
+  {/* CALL */}
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      flex: 1,
+    }}
+  >
+    <Button
+      variant="outlined"
+      href={`tel:${shop.phone}`}
+      sx={{
+        minWidth: 50,
+        width: 50,
+        height: 50,
+        borderRadius: "50%",
+        p: 0,
+         "&:hover": {
+      backgroundColor: "#1976d2",
+      color: "#fff",
+      borderColor: "#1976d2",
+      transform: "translateY(-2px)",
+      boxShadow: "0 4px 12px rgba(25,118,210,0.4)",
+    },
+      }}
+    >
+      <CallIcon fontSize="small" />
+    </Button>
 
-            {/* CALL */}
+    <Typography
+      sx={{
+        mt: 0.5,
+        fontSize: "0.65rem",
+        textAlign: "center",
+        color: "text.secondary",
+      }}
+    >
+      Call Shop
+    </Typography>
+  </Box>
 
-            <Button
-              variant="outlined"
-              startIcon={<CallIcon />}
-              href={`tel:${shop.phone}`}
-              sx={{
-                borderRadius: 3,
-                textTransform: "none",
-                py: 1,
-              }}
-            >
-              Call
-            </Button>
+  {/* INSTAGRAM */}
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      flex: 1,
+    }}
+  >
+    <Button
+      variant="outlined"
+      href={shop.instagram}
+      target="_blank"
+      sx={{
+        minWidth: 50,
+        width: 50,
+        height: 50,
+        borderRadius: "50%",
+        p: 0,
+        "&:hover": {
+      background:
+        "linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4)",
+      color: "#fff",
+      borderColor: "transparent",
+      transform: "translateY(-2px)",
+      boxShadow: "0 4px 12px rgba(221,42,123,0.4)",
+    },
+      }}
+    >
+      <InstagramIcon fontSize="small" />
+    </Button>
 
-            {/* INSTAGRAM */}
-
-            <Button
-              variant="outlined"
-              startIcon={<InstagramIcon />}
-              href={shop.instagram}
-              target="_blank"
-              sx={{
-                borderRadius: 3,
-                textTransform: "none",
-                py: 1,
-              }}
-            >
-              Instagram
-            </Button>
-
-          </Stack>
-
+    <Typography
+      sx={{
+        mt: 0.5,
+        fontSize: "0.65rem",
+        textAlign: "center",
+        color: "text.secondary",
+      }}
+    >
+      View Instagram
+    </Typography>
+  </Box>
+</Stack>
         </CardContent>
       </Card>
     </motion.div>

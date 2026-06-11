@@ -11,19 +11,21 @@ function FeaturedCategories({
   return (
     <Box
       sx={{
-        mt: 2,
+        mt: 1,
+        mr: 1,
+        ml: 1.5,
         display: "flex",
-        gap: 1,
+        gap: 0.5,
         overflowX: "auto",
-        pb: 1,
+        pb: 0.6,
 
         "&::-webkit-scrollbar": {
-          height: "4px",
+          height: 1,
         },
 
         "&::-webkit-scrollbar-thumb": {
           background: "rgba(200,169,107,0.4)",
-          borderRadius: "20px",
+          borderRadius: 20,
         },
       }}
     >

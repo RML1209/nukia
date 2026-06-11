@@ -10,6 +10,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 
@@ -276,8 +277,8 @@ const locations = [
               sx={{
                 mb: 2,
                 color: "#C8A96B",
-                fontFamily: "Didot, Playfair Display, serif",
-                fontWeight: 600,
+ fontFamily: "Lavishly Yours, cursive",          
+      fontWeight: 600,
                 letterSpacing: 3,
 
                 display: "flex",
@@ -332,7 +333,7 @@ const locations = [
                   },
                 }}
               >
-                👋
+              <AutoAwesomeIcon/>
               </Box>
             </Typography>
 
@@ -342,7 +343,7 @@ const locations = [
               variant="h5"
               sx={{
                 mb: 2,
-                fontFamily: "Playfair Display, serif",
+                 fontFamily: "Inter, sans-serif",  
               }}
             >
               {t.title}
@@ -427,8 +428,8 @@ const locations = [
 
         <Container
           sx={{
-            mt: 6,
-            pb: 8,
+            mt: 1,
+            
           }}
         >
           {/* LOADING */}
@@ -441,7 +442,7 @@ const locations = [
             <div
               style={{
                 textAlign: "center",
-                marginTop: 50,
+                marginTop: 10,
               }}
             >
               <CircularProgress />
@@ -460,7 +461,7 @@ const locations = [
 
               <Typography
                 sx={{
-                  mb: 3,
+                  mb: 1,
                   color: "gray",
                 }}
               >
@@ -485,6 +486,7 @@ const locations = [
                 sx={{
                   color: "gray",
                   mb: 1,
+                  fontFamily: "Inter, sans-serif", 
                 }}
               >
                 😔 No perfume shops found

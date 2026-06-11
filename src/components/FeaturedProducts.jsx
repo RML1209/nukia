@@ -19,7 +19,7 @@ function FeaturedProducts({
       <Box
         sx={{
           textAlign: "center",
-          mb: 5,
+          mb: 2,
         }}
       >
         <Typography
@@ -27,29 +27,28 @@ function FeaturedProducts({
             color: "gray",
           }}
         >
-          Select a category to view perfumes
+          Select a category above to view perfumes
         </Typography>
       </Box>
     );
   }
 
   return (
-    <Box sx={{ mb: 5 }}>
+    <Box sx={{ mb: 2 }}>
       {/* =========================
           SECTION TITLE
       ========================= */}
 
       <Typography
-        variant="h5"
         sx={{
-          mb: 2,
+          mb: 1.4,
           color: "#C8A96B",
-          fontFamily:
-            "Playfair Display, serif",
+        
           fontWeight: 600,
+          lineHeight: 1.2,
         }}
       >
-        Featured Perfumes
+        Featured Perfumes category
       </Typography>
 
       {/* =========================
@@ -59,12 +58,12 @@ function FeaturedProducts({
       <Box
         sx={{
           display: "flex",
-          gap: 2,
+          gap: 1.5,
           overflowX: "auto",
-          pb: 1,
+        
 
           "&::-webkit-scrollbar": {
-            height: "5px",
+            height: 1,
           },
 
           "&::-webkit-scrollbar-thumb": {
@@ -78,11 +77,11 @@ function FeaturedProducts({
           <Card
             key={product.id}
             sx={{
-              minWidth: 220,
-              maxWidth: 220,
-
-              borderRadius: 3,
-
+              
+              width:120,
+              borderRadius: 1,
+              
+ flexShrink: 0,
               background:
                 "rgba(255,255,255,0.03)",
 
@@ -99,7 +98,7 @@ function FeaturedProducts({
 
               "&:hover": {
                 transform:
-                  "translateY(-6px)",
+                  "translateY(-1px)",
 
                 border:
                   "1px solid rgba(200,169,107,0.3)",
@@ -121,7 +120,7 @@ function FeaturedProducts({
                 }
                 sx={{
                   width: "100%",
-                  height: 180,
+                  height: 80,
                   objectFit: "cover",
 
                   transition:
@@ -163,13 +162,19 @@ function FeaturedProducts({
                 PRODUCT DETAILS
             ========================= */}
 
-            <CardContent>
+            <CardContent   sx={{
+    p: 0.5,
+    "&:last-child": {
+      pb: 0.5,
+    },
+  }}>
               {/* PRODUCT NAME */}
 
               <Typography
                 sx={{
                   fontWeight: 600,
-                  fontSize: "1rem",
+                  fontSize: "0.7rem",
+                   lineHeight: 1.1,
 
                   overflow: "hidden",
                   textOverflow:
@@ -185,9 +190,10 @@ function FeaturedProducts({
 
               <Typography
                 sx={{
+                   fontSize: "0.68rem",
                   color: "#C8A96B",
                   fontWeight: 700,
-                  mt: 0.5,
+                  mt: 0.2,
                 }}
               >
                 TZS{" "}
@@ -201,8 +207,8 @@ function FeaturedProducts({
               <Typography
                 sx={{
                   color: "gray",
-                  fontSize: "0.85rem",
-                  mt: 1,
+                  fontSize: "0.68rem",
+                  mt: 0.2,
                 }}
               >
                 {product.shop_name}
@@ -213,8 +219,8 @@ function FeaturedProducts({
               <Typography
                 sx={{
                   color: "#999",
-                  fontSize: "0.75rem",
-                  mt: 0.5,
+                  fontSize: "0.55rem",
+                  mt: 0.1,
                 }}
               >
                 {product.category}
