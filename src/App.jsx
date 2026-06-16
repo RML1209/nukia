@@ -44,6 +44,7 @@ import { motion } from "framer-motion";
 
 import API from "./api/axios";
 
+import ShopProfile from "./components/ShopProfile";
 import SearchBar from "./components/SearchBar";
 import LocationSelect from "./components/LocationSelect";
 import ShopCard from "./components/ShopCard";
@@ -803,6 +804,13 @@ const locations = [
       path="/terms"
       element={<TermsServices />}
     />
+
+    {/* SHOP PROFILE PAGE */}
+<Route
+  path="/shop/:id"
+  element={<ShopProfile />}
+/>
+
 
     </Routes>
   );

@@ -8,6 +8,8 @@ import {
   Box,
 } from "@mui/material";
 
+import { useNavigate } from "react-router-dom";
+
 import ImageIcon from "@mui/icons-material/Image";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CallIcon from "@mui/icons-material/Call";
@@ -17,6 +19,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import { motion } from "framer-motion";
 
+
 const ShopCard = ({ shop, language }) => {
 
   // ================= WHATSAPP AUTO MESSAGE =================
@@ -25,14 +28,14 @@ const ShopCard = ({ shop, language }) => {
     language === "sw"
       ? `Habari, nimeona duka lako kwenye nukia.online. Je, una perfume za kuniuzia?`
       : `Hi, I searched your shop on nukia.online website. Do you have perfume to sell to me?`;
-
+const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <Card
+      <Card 
         sx={{
           mb: 3,
           borderRadius: 1.5,
@@ -59,17 +62,32 @@ const ShopCard = ({ shop, language }) => {
 
             {/* PROFILE IMAGE */}
 
-            <Avatar
-              src={shop.profile_image}
-              alt={shop.name}
-              sx={{
-                width: 50,
-                height: 50,
-                border: "2px solid #C8A96B",
-                boxShadow:
-                  "0 4px 15px rgba(0,0,0,0.25)",
-              }}
-            />
+           <Avatar
+  src={shop.profile_image}
+  alt={shop.name}
+
+  onClick={() => {
+  console.log(
+    "SHOP CLICKED:",
+    shop.id
+  );
+
+  navigate(`/shop/${shop.id}`);
+}}
+
+  sx={{
+    width: 50,
+    height: 50,
+    border: "2px solid #C8A96B",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.25)",
+    cursor: "pointer",
+    transition: "0.2s ease",
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0 6px 20px rgba(0,0,0,0.35)",
+    },
+  }}
+/>
 
             {/* SHOP DETAILS */}
 
@@ -329,6 +347,7 @@ const ShopCard = ({ shop, language }) => {
   justifyContent="center"
   sx={{ mt: 2 }}
 >
+
   {/* WHATSAPP */}
   <Box
     sx={{
@@ -413,6 +432,8 @@ const ShopCard = ({ shop, language }) => {
       Call Shop
     </Typography>
   </Box>
+
+  
 
   {/* INSTAGRAM */}
   <Box
